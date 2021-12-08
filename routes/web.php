@@ -34,7 +34,7 @@ Route::get('store', function () {
 });
 
 Route::get('product', function () {
-    return view('store');
+    return view('product');
 });
 
 Route::get('hello', [SiteController::class, 'index']);
