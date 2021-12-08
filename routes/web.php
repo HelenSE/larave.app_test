@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\SiteController;
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,26 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    //$product = Product::find(1);
-//    $data = [
-//        'name'=> 'create product',
-//        'price'=> 1000
-//    ];
-//    $product = Product::create($data);
-//    dd($product);
-//    $product = new Product();
-//    $product->name = 'New name 12';
-//    $product->price = 135;
-//    $product->save();
-    $list = Product::
-    //where('status', true)
-         where('price', '>', 10000)
-         ->get();
-    //dd($list);
+    $data = [
+        'name'=> 'first category',
+        'price'=> 1
+    ];
+    $category = Category::create($data);
+
+    $secondCategory = new Category();
+    $secondCategory->name = 'test category';
+    $secondCategory->status = 0;
+    $secondCategory->save();
+
     return view('main');
 });
 
-Route::get('/store', function () {
+Route::get('store', function () {
+    return view('store');
+});
+
+Route::get('product', function () {
     return view('store');
 });
 
