@@ -29,11 +29,11 @@ Route::post('show-form', [FormController::class, 'postForm'])->name('namePostFor
 
 
 Route::get('product/{id}', [ProductController::class, 'index'])->name('show-product');
+Route::get('catalog', [ProductController::class, 'catalog'])->name('catalog');
 
-Route::get('catalogkdflsekfl', function () {
-    //dd(\route('dfsljhflk'));
-    return view('store');
-})->name('dfsljhflk');
+//Route::get('catalog', function () {
+//    return view('store');
+//})->name('dfsljhflk');
 
 //Route::get('product', function () {
 //    return view('product');
