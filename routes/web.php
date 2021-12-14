@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SiteController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -14,31 +18,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
-    $data = [
-        'name'=> 'first category',
-        'price'=> 1
-    ];
-    $category = Category::create($data);
-
-    $secondCategory = new Category();
-    $secondCategory->name = 'test category';
-    $secondCategory->status = 0;
-    $secondCategory->save();
-
     return view('main');
 });
 
-Route::get('store', function () {
-    return view('store');
-});
+Route::get('show-form', [FormController::class, 'showForm'])->name('showForm');
+Route::post('show-form', [FormController::class, 'postForm'])->name('namePostForm');
 
-Route::get('product', function () {
+
+Route::get('product/{id}', [ProductController::class, 'index'])->name('show-product');
+
+Route::get('catalogkdflsekfl', function () {
+    //dd(\route('dfsljhflk'));
     return view('store');
-});
+})->name('dfsljhflk');
+
+//Route::get('product', function () {
+//    return view('product');
+//});
 
 Route::get('hello', [SiteController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
