@@ -205,7 +205,7 @@
 
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
-                    <span class="store-qty">Showing {{($products->currentPage(0)*$products->perPage())}} products</span>
+                    <span class="store-qty">Showing {{($products->currentPage()*$products->perPage())}} products</span>
                   
 
                 </div>
