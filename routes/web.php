@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -23,6 +25,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('main');
 });
+
+Route::get('admin', function (){
+    return view('admin.index');
+});
+
+;
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::resources([
+        'brand'=> BrandController::class,
+        'category' => CategoryController::class,
+        'product' => \App\Http\Controllers\Admin\ProductController::class
+    ]);
+});
+
+Route::resource('brand', BrandController::class)
+    ->except(['destroy']);
+Route::resource('category', CategoryController::class);
+Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
 
 Route::get('show-form', [FormController::class, 'showForm'])->name('showForm');
 Route::post('show-form', [FormController::class, 'postForm'])->name('namePostForm');
