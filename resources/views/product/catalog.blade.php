@@ -206,16 +206,8 @@
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
                     <span class="store-qty">Showing {{($products->currentPage()*$products->perPage())}} products</span>
-                        {!! $products->links()!!}
-{{--                    {!! $products->links('vendor\pagination\my_default') !!}--}}
-{{--                    {!! $products->links('vendor\pagination\simple-default') !!}--}}
-                    <ul class="store-pagination">
-                        <li class="active">1</li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
+
+
                 </div>
                 <!-- /store bottom filter -->
             </div>

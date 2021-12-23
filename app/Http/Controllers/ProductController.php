@@ -22,7 +22,6 @@ class ProductController extends Controller
     public function catalog()
     {
         $products = Product::where('status', 1)->simplePaginate(9);
-//            ->simplePaginate(9);
         $categories = Category::all();
         $brands = Brand::all();
         return view('product.catalog', [
