@@ -33,6 +33,7 @@ class CreateBrandRequest extends FormRequest
         return [
           'name.min' => 'Новое сообщение об ошибке',
           'name.email' => 'Некорректный е-мейл'
+            //hgkhgkg
         ];
 
     }

@@ -42,7 +42,7 @@ class BrandController extends Controller
     {
         $data = $request->all();
         $brand = Brand::create($data);
-       // dd($brand);
+        dd($brand); //
         return redirect(route('admin.brand.index'));
     }
 
