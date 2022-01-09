@@ -2,7 +2,7 @@
 @section('content')
     <form action="{{ route('admin.brand.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="name">
+        <input type="text" name="name" {{old('name')}}>
         <br>
         <input type="file" name="logo">
         <br>

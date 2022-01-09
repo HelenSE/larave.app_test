@@ -6,6 +6,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
+use App\Http\Middleware\CheckAuth;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +33,8 @@ Route::get('admin', function (){
 
 ;
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::middleware(['auth', 'ololo'])->prefix('admin')->name('admin.')
+    ->group(function(){
     Route::resources([
         'brand'=> BrandController::class,
         'category' => CategoryController::class,
