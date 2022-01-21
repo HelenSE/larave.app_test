@@ -35,6 +35,10 @@ Route::get('admin', function (){
     return view('admin.index');
 });
 
+
+Route::get('product', function () {
+    return view('product');
+=======
 ;
 
 Route::middleware(['auth', 'ololo'])->prefix('admin')->name('admin.')
