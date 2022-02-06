@@ -27,6 +27,23 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/', function () {
     return view('main');
 });
+Route::get('test', function (){
+//    $balance = rand(0,100);
+//    dump($balance);
+//    if ($balance>50){
+//        \App\Events\BingoEvent::dispatch($balance);
+//    }
+//    Illuminate\Support\Facades\Mail::to('rolexvinchester@gmail.com')->send(new \App\Mail\BingoMail(3000));
+//    \App\Jobs\BingoJob::dispatch();
+//    dump(222);
+    $responce = \Illuminate\Support\Facades\Http::get('api.openweathermap.org/data/2.5/weather', [
+        'q'=>'Chicago',
+        'appid'=>'6094572f1d551d269ea8854e896ab5d0',
+        'lang'=>'ru',
+    ]);
+    dd($responce->object());
+
+});
 
 Route::get('cart',[CartController::class, 'index']);
 Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');
@@ -35,20 +52,14 @@ Route::get('admin', function (){
     return view('admin.index');
 });
 
-
-Route::get('product', function () {
-    return view('product');
-=======
-;
-
 Route::middleware(['auth', 'ololo'])->prefix('admin')->name('admin.')
     ->group(function(){
-    Route::resources([
-        'brand'=> BrandController::class,
-        'category' => CategoryController::class,
-        'product' => \App\Http\Controllers\Admin\ProductController::class
-    ]);
-});
+        Route::resources([
+            'brand'=> BrandController::class,
+            'category' => CategoryController::class,
+            'product' => \App\Http\Controllers\Admin\ProductController::class
+        ]);
+    });
 
 Route::resource('brand', BrandController::class)
     ->except(['destroy']);
@@ -62,9 +73,9 @@ Route::post('show-form', [FormController::class, 'postForm'])->name('namePostFor
 Route::get('product/{id}', [ProductController::class, 'index'])->name('show-product');
 Route::get('catalog', [ProductController::class, 'catalog'])->name('catalog');
 
-Route::get('test-file', function (){
-          $brand = \App\Models\Brand::query()->find(1);
-          dump($brand->products()->where('price', '>', 1000)->get());
+//Route::get('test-file', function (){
+//    $brand = \App\Models\Brand::query()->find(1);
+//    dump($brand->products()->where('price', '>', 1000)->get());
 //        $products = \App\Models\Product::where('id', '<', '5')->with('brand')->get();
 //        foreach ($products as $product){
 //            dump($product->brand);
@@ -75,7 +86,7 @@ Route::get('test-file', function (){
 //    Storage::append('ololo/2.txt', '123549');
 //    //dump(Storage::path('ololo/2.txt'));
 //    //dump(Storage::disk('public')->url('ololo/2.txt'));
-});
+//});
 
 //Route::get('catalog', function () {
 //    return view('store');
@@ -84,9 +95,9 @@ Route::get('test-file', function (){
 //Route::get('product', function () {
 //    return view('product');
 //});
-
-Route::get('hello', [SiteController::class, 'index']);
-
+//
+//Route::get('hello', [SiteController::class, 'index']);
+//
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
