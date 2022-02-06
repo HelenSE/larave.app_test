@@ -45,28 +45,6 @@ class SendEmailCommand extends Command
         $email = $this->option('email') ?? null;
         $messageText = $this->option('messageText') ?? 'default';
 
-//        if (!$email){
-//            $email = $this->ask('What email adress should you send');
-//
-//        }
-
-//        if (filter_var($email, FILTER_VALIDATE_EMAIL) == false){
-//            $email = $this->error('Invalid email address: "'.$email.'".');
-//            return Command::FAILURE;
-//        }
-
-
-//        if ($id) {
-//           try {
-//               $email = User::findOrFail($id)->email;
-//            }
-//            catch (\Exception $e){
-//                $this->error('User id not found ');
-//                return Command::FAILURE;
-//            }
-//        }
-
-
             Mail::to($email)
                 ->send(new CronMail($messageText));
             $this->info('Email sent to' .$email.'');
